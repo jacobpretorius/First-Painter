@@ -1,0 +1,17 @@
+{
+  "name": "first-painter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jacob Pretorius",
+  "license": "MIT",
+  "dependencies": {
+    "chrome-launcher": "^0.12.0",
+    "lighthouse": "^5.6.0",
+    "moment": "^2.24.0",
+    "yarn": "^1.21.1"
+  }
+}
