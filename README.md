@@ -8,3 +8,5 @@ Chrome headless tool to run lighthouse performance tests and display average res
 `node app.js https://jcpretorius.com/blog (5)`
 
 (Optional): the amount of times to repeat the test, defaults to 3.
+
+PS: You need to have Chrome installed.

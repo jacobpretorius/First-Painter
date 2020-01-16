@@ -11,10 +11,14 @@ const runs = process.argv[3] || 3;
 
 // Opens up Chrome in headless mode and returns the lighthouse results
 function launchChromeAndRunLighthouse(url, config = null) {
-  return chromeLauncher.launch(flags).then(chrome => {
-    flags.port = chrome.port;
-    return lighthouse(url, flags, config).then(results =>
-      chrome.kill().then(() => results));
+  return chromeLauncher.launch(flags)
+    .then(chrome => {
+      flags.port = chrome.port;
+      return lighthouse(url, flags, config)
+        .then(results =>
+          chrome.kill().then(() => results))
+        .catch((error) => { console.log(error) })
+    .catch((error) => { console.log(error) });
   });
 }
 
@@ -39,7 +43,7 @@ function makeResultOutputString(resultObject) {
 
 // RUN THE TEST BABY!
 function runTaskAsync() {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     launchChromeAndRunLighthouse(targetUrl)
     .then(results => { 
       let resultObject = makeResultObject(results);
@@ -47,8 +51,8 @@ function runTaskAsync() {
 
       console.log(resultOutputString);
       resolve(resultObject);
-    });
-  });
+    }).catch((error) => { console.log(error) });
+  }).catch((error) => { console.log(error) });
 };
 
 // General one liner to get the average of an array of numbers
